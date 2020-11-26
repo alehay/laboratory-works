@@ -38,7 +38,7 @@ int main()
                 std::cout << std::endl;
                 break;
             }
-            ++stringPos;
+           ++stringPos;
        }
     }
 
