@@ -25,15 +25,21 @@ int main()
         std::cout << "введите слово и фразу для поиска : " << std::endl;
         std::string stringFind;
         std::getline (std::cin,stringFind);
-
-        // auto не  испльзем для наглядности
-       for (std::vector<std::string >::iterator it = textVec.begin() ; it != textVec.end(); ++it) {
+        unsigned int stringPos {0};
+        // auto не испльзовал для наглядности, но компилятор знает !
+        for (std::vector<std::string >::iterator it = textVec.begin() ; it != textVec.end(); ++it) {
             std::size_t found = it->find(stringFind);
             if(found != std::string::npos) {
-                std::cout << "искомая фраза обнаружена на позиции : " << found << std::endl;
+
+                std::cout << "искомая фраза обнаружена в строке : " << stringPos  << std::endl;
+                std::cout << "на позиции : " << found  << " символ " << std::endl;
+
+                std::cout << it-> substr(found ,stringFind.size() );
+                std::cout << std::endl;
                 break;
             }
-        }
+            ++stringPos;
+       }
     }
 
     return 0;
