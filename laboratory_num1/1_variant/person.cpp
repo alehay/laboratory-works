@@ -1,6 +1,6 @@
 #include "person.hpp"
 
-bool writePreson (Person & Person_in) {
+void writePreson (Person & Person_in) {
     write ( Person_in.name, "имя");
     write (Person_in.surname, "фамилия");
     write (Person_in.age, "возраст");
