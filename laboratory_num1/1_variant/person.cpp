@@ -6,7 +6,6 @@ void writePreson (Person & Person_in) {
     write (Person_in.age, "возраст");
 }
 
-
 template <typename T>
 bool write (T & var , std::string ask) {
     bool imputComplete = false;
