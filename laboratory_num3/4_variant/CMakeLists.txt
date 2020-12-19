@@ -9,7 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(MESSEGE "cmpilate cmake run")
 
-project(lab_3_var_1)
+project(lab_3_var_4)
 message("Cmake is started")
 add_executable(${PROJECT_NAME} EXCLUDE_FROM_ALL main.cpp)
-target_sources(${PROJECT_NAME} PRIVATE person.cpp)
+target_sources(${PROJECT_NAME} PRIVATE student.cpp)

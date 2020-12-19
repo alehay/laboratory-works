@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 
+// структура хранит данные о сотруднике
 struct Person{
     std::string name; 
     std::string surname;
