@@ -35,4 +35,5 @@
 *.json
 **/build
 *.docx
+*.docx#
 

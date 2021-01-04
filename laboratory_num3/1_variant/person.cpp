@@ -13,7 +13,7 @@ template <typename T>
 bool write (T & var , std::string ask) {
     bool imputComplete = false;
     while (!imputComplete) {
-        std::cout <<" пожалусто введите " << ask << " : " ;
+        std::cout <<" пожалуйста введите поле " << ask << " : " ;
         std::cin >> var;
         // контроль валидности данных 
         if (std::cin.fail()) {

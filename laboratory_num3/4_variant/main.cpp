@@ -5,33 +5,19 @@
 #include <iostream>
 #include <istream>
 #include <vector>
+#include "student.hpp"
 
-const int ageLimit = 33;
 
-int main () {
-    std::cout << "укажите количество сотрудников для ввода или 0 для выхода : " << std::endl;
-    int qtyPerson;
-    std::cin >> qtyPerson;
-    std::vector <Person> vec_person (qtyPerson);
-
-    for (int i = 0 ; i < qtyPerson ; ++i ) {
-        writePreson( vec_person.at(i) );
-        if (i < qtyPerson - 1) {    
-            std::cout << "***** следующая запись *****" << std::endl;
-        } else {
-            std::cout << "***** конец ввода *****"<< std::endl;
-        }
+int  main( int argc, char *  argv[] )  {
+    if(argc) {
+        for (int i = 0 ; i < argc; i++) {
+           std::cout << argv[i];  
+        } 
     }
-
-    std::cout << "сотрудники чей возраст превышает " << ageLimit << " : " << std::endl;
-    std::cout << std::endl;
-    for (int i = 0 ; i < qtyPerson ; ++i ) {   
-        if (vec_person.at(i).age > ageLimit) {
-            
-            std::cout << vec_person.at(i).name << ", ";
-        }
-    }
-    std::cout << std::endl;
+    std::string alehay {"aaaa"};
+    Student student {alehay, alehay, alehay};
+    
+    std::cout << "Hellow  world" << std::endl;
 
     return 0;
 }
