@@ -1,40 +1,72 @@
 # ifndef STUDENT_H
 # define STUDENT_H
+
 #include <string> 
 #include <vector>
 #include <map>
-/* создадим пару предмет количество пересдачь, 
-*  которая будет хранится в map 
-*/
+#include <type_traits> 
+#include <iostream>
 
-std::map <std::string, int> academicDiscipline = 
-{{ "сопромат", 0 },
- { "теорМех",  0 }, 
- { "ТФКП",     0 }, 
- { "ТеорВер",  0 },
- { "ТММ "   ,  0 }
- };
+constexpr int countDiscipline {6};
+// храним предметы 
+std::array <std::string, countDiscipline > academicDiscipline  
+{ "Сопромат", "теорМех",
+  "ТФКП", "ТеорВер", 
+  "ТММ", "физика" };
 
+template <typename T>
+bool write (T & var , const std::string  ask) {
+    bool inputComplete = false;
+    if constexpr (std::is_same_v < T, std::map <std::string, int> >) {
+        std::cout << ask << std::endl;
+        for (auto discip : academicDiscipline) {
+            std::cout << "предмет : " <<  discip << "\t" ;
+            std::cout << "количество пересдач : ";
+            int count {0}; 
+            std::cin >> count;
+            if (count) {
+                var.insert ({discip , count});
+            }
+        }
+      
+    } else {
+        while (!inputComplete) {
+            std::cout <<" пожалуйста, введите поле " << ask << " : " ;
+            std::cin >> var;
+            // контроль валидности данных 
+            if (std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore(32767, '\n');
+                std::cout << "ошибка повторите ввод: ";
+                continue;
+            }
+            inputComplete = true;
+            break;
+        }
+    }    
+    return inputComplete;
+}
 
+// данные о студенте 
 struct Student{
-    // персональные данные о студенте 
     std::string name; 
     std::string surname;
     std::string patronymic; 
     std::map <std::string, int> curent_academicDiscipline;
-    // дисциплины пересдачи относящиеся к студенту:
-    
-    //в конструкторе берем имя фамилию и список дициплин
-    Student(std::string n , std::string  s , std::string p ) :
-    name {n}, surname  {s}, patronymic {p} {
-        curent_academicDiscipline = academicDiscipline;
-    }
+
+    // если init - true инициализируем переменные.  
+    Student (bool init){
+        if (init) {
+            write ( name, "имя");
+            write ( surname, "фамилия" );
+            write ( patronymic, "отчество") ;
+            write ( curent_academicDiscipline, "Пересдача "); 
+        } 
+    }    
 };
 
-void wiriteStudent (Student & Student_in);
-template <typename T>
-bool write (T & var , std::string ask);
 
 
 
 #endif 
+
