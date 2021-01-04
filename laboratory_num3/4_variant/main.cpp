@@ -37,9 +37,27 @@ for (auto & student : students ) {
         std::cout << "количество пересдач " << count << std::endl; 
 
     }
+    std::cout<< "*****" << std::endl;
+
 }
 
-// ввести студентов и академические задолжности... 
-// вывод по количеству пересдачь ...
+
+/* тест функционала печати академических задолждностей 
+for (auto & dicip : academicDiscipline ) {
+   for (auto & student : students )  {
+       std::cout << student << std::endl; 
+       student.debtPrint(dicip);
+   }
+
+}
+*/
+
+
+for (auto & dicip : academicDiscipline ) { 
+    findAndPrint (dicip , students );
+}
+
+// ввести студентов и академические задолженности... 
+// вывод по количеству пересдач ...
     return 0;
 }
