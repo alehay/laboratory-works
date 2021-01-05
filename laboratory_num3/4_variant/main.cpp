@@ -18,46 +18,31 @@ int  main( int argc, char *  argv[] )  {
 std::cout << "пожалуйста введите количество студентов : " ;
 int countStudents {0};
 std::cin >> countStudents ;
+// создаем верктор что бы хранить студентов ;
 std::vector < Student >  students; 
+//  выделяем место под обьекты
 students.reserve(countStudents);
 
-
-
+// инициализация студентов 
 for (int i = 0; i < countStudents; ++i) {
     students.emplace_back(Student (true));
+    sep("следующий студент");
 }
 
 for (auto & student : students ) {
-
+    sep("долги студента");
     std::cout << student.name << " " <<
     student.surname << " " << student.patronymic <<  std::endl; 
-    
     for (auto & [disp, count] : student.curent_academicDiscipline) {
         std::cout << "дисциплина " << disp << std::endl;
-        std::cout << "количество пересдач " << count << std::endl; 
-
+        std::cout << "количество пересдач : " << count << std::endl; 
     }
-    std::cout<< "*****" << std::endl;
-
+    
 }
-
-
-/* тест функционала печати академических задолждностей 
-for (auto & dicip : academicDiscipline ) {
-   for (auto & student : students )  {
-       std::cout << student << std::endl; 
-       student.debtPrint(dicip);
-   }
-
-}
-*/
-
 
 for (auto & dicip : academicDiscipline ) { 
+    sep ("долги студентов по диcциплинам");
     findAndPrint (dicip , students );
 }
-
-// ввести студентов и академические задолженности... 
-// вывод по количеству пересдач ...
     return 0;
 }

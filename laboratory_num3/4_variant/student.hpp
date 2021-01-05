@@ -81,8 +81,6 @@ struct Student{
 
 };
 
-
-
 void findAndPrint (const std::string & disp,
                    const std::vector <Student> & students
                    ) {
@@ -99,16 +97,26 @@ void findAndPrint (const std::string & disp,
         it !=  student_it->curent_academicDiscipline.end()) {
             debStudents.insert (student_it);
         }
-
     }
     for (auto & student : debStudents ) {
-        std::cout << *student;
+        std::cout << *student << " : ";
         student->debtPrint(disp);
     }
 
 }
-
-
+//  функция сепаратор
+void sep (std::string message = " разделитель ") {
+    std::cout<<std::endl;
+    for (int i = 0; i < 40; ++i) {std::cout << "*";}
+    std::cout<<std::endl;
+    int pos = (40 - message.size())/2;
+    for (int i = 0; i < pos  ; ++i) {std::cout << "*";}
+    std::cout<< "\t" << message << "\t";
+    for (int i = 0; i < pos  ; ++i) {std::cout << "*";}
+     std::cout<<std::endl;
+    for (int i = 0; i < 40; ++i) {std::cout << "*";}
+    std::cout<<std::endl;
+}
 
 #endif 
 
