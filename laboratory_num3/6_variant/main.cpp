@@ -31,15 +31,13 @@ int main () {
     
     std::cout <<  "сотрудники чей стаж превыешает : " << seniority << std::endl;
 
-    for ( auto person = vec_person.begin();
-        person != vec_person.end();  ++ person ) {
-        //for ( auto & [name, post, year] :  person ) {
-            if (seniority < ( ltm->tm_year - person->year )) {
-                std::cout << person->name << " " << person->post << std::endl;
-            }
-        //}
-    }
-    std::cout << std::endl;
+ 
+        for (auto & [name, lastname , post, year] :  vec_person)  {
+            if (seniority < ( ltm->tm_year - year + 1900)) {
+                std::cout <<name << "" << lastname << " " << post << std::endl;
+            }           
+        }
+     std::cout << std::endl;
 
     return 0;
 }
