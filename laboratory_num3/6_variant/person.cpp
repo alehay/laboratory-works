@@ -3,7 +3,8 @@
 
 Person::Person (bool init) {
     if (init) {
-        write ( name, "ФИО");
+        write ( name, "Фамилия");
+        write ( lastname, "Инициалы" );
         write ( post, "должность");
         write ( year, "год поступления на работу");
     }

@@ -5,9 +5,14 @@
 #include <iostream>
 #include <istream>
 #include <vector>
+#include <ctime>
 #include "person.hpp"
 
 int main () {
+
+    time_t now = time(0); // получаем время эпохи UTC
+    tm *ltm = localtime(&now); // структура которая представляет время
+
     std::cout << "укажите количество сотрудников   : " << std::endl;
     int qtyPerson;
     std::cin >> qtyPerson;
@@ -20,27 +25,20 @@ int main () {
         std::cout << "*********************" << std::endl;
     }
 
-/*
-    // цикл ввода 
-    for (int i = 0 ; i < qtyPerson ; ++i ) {
-        writePreson( vec_person.at(i) );
-        if (i < qtyPerson - 1) {    
-            std::cout << "***** следующая запись *****" << std::endl;
-        } else {
-            std::cout << "***** конец ввода *****"<< std::endl;
-        }
+    std::cout << "введите требуемый стаж на текущий момент : ";
+    int seniority;
+    std::cin >>  seniority;
+    
+    std::cout <<  "сотрудники чей стаж превыешает : " << seniority << std::endl;
+
+    for ( auto person = vec_person.begin();
+        person != vec_person.end();  ++ person ) {
+        //for ( auto & [name, post, year] :  person ) {
+            if (seniority < ( ltm->tm_year - person->year )) {
+                std::cout << person->name << " " << person->post << std::endl;
+            }
+        //}
     }
-*/
-    //цикл вывода 
-    /*
-    std::cout << "сотрудники чей возраст превышает " << ageLimit << " : " << std::endl;
-    std::cout << std::endl;
-    for (int i = 0 ; i < qtyPerson ; ++i ) {   
-        if (vec_person.at(i).age > ageLimit) {
-            std::cout << vec_person.at(i).name << ", ";
-        }
-    }
-    */
     std::cout << std::endl;
 
     return 0;

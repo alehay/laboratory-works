@@ -5,9 +5,11 @@
 #include <iostream>
 #include <vector>
 
+
 // структура хранит данные о сотруднике
 struct Person{
     std::string name; 
+    std::string lastname;
     std::string post;
     short int  year;
 
