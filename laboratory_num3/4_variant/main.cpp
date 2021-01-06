@@ -29,6 +29,7 @@ for (int i = 0; i < countStudents; ++i) {
     sep("следующий студент");
 }
 
+//  выводим долги по каждому студенту отдельно
 for (auto & student : students ) {
     sep("долги студента");
     std::cout << student.name << " " <<
@@ -37,9 +38,8 @@ for (auto & student : students ) {
         std::cout << "дисциплина " << disp << std::endl;
         std::cout << "количество пересдач : " << count << std::endl; 
     }
-    
 }
-
+// выводим долги по каждой дисциплине
 for (auto & dicip : academicDiscipline ) { 
     sep ("долги студентов по диcциплинам");
     findAndPrint (dicip , students );
