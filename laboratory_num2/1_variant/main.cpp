@@ -4,15 +4,18 @@
  */
 #include <iostream>
 #include "mymatrix.hpp"
-
+#include <vector> 
 
 int main(int, char**) {
-myMatrix<double> matrix ; 
 
-    
-    
+myMatrix<double> matrix;
+  matrix.load("matrix1.txt");
+  matrix.print();
 
-
-
-    std::cout << "Hello, world!\n";
+  for(int i = 0; i < matrix.row(); ++i){
+    for(int j = 0; j < matrix.column(); ++j){
+      std::cout << matrix[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
 }

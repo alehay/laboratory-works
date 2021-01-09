@@ -3,9 +3,8 @@
 
 
 template<class T>  
-myMatrix<T>::myMatrix () {
+myMatrix<T>::myMatrix () {}
 
-}
 
 template<class T>  
 myMatrix<T>::myMatrix (int in_rows , int in_columns ) 
