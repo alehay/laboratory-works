@@ -1,10 +1,48 @@
-#include "mymatrix.hpp"
+#ifndef MY_MATRIX_H
+#define MY_MATRIX_H
+#include <iostream> 
 #include <fstream>
+
+
+template <class T>
+class myMatrix{
+private:
+    int rows_count {0};
+    int columns_count {0};
+    //int size; 
+    bool is_exist {false};
+    T** rowsPtr  {nullptr}; 
+    
+    
+    bool allocator ();
+
+public:
+    explicit myMatrix ();
+    explicit myMatrix (int in_rows , int in_columns );
+    
+    //double sumPositive ();
+    void print();
+    bool load(const std::string & path);
+    bool input();
+    ~myMatrix ();
+
+    // operators
+    T* operator[] (int i){
+    return rowsPtr[i];
+  }
+
+  int row(){
+    return rows_count;
+  }
+
+  int column(){
+    return columns_count;
+  }
+};
 
 
 template<class T>  
 myMatrix<T>::myMatrix () {}
-
 
 template<class T>  
 myMatrix<T>::myMatrix (int in_rows , int in_columns ) 
@@ -39,8 +77,9 @@ template<class T>
 void myMatrix<T>::print() {
     for (int i = 0 ; i < rows_count ; ++i ) {
         for (int j = 0 ; j < columns_count ; ++ j  ) {
-            std::cout << rowsPtr [i][j];
+            std::cout << rowsPtr [i][j] << " ";
         }
+        std::cout << std::endl;
     }
 }
 
@@ -52,10 +91,14 @@ bool myMatrix<T>::load(const std::string & path) {
         if(ifs.is_open() ) {
             ifs >> rows_count >> columns_count ;
             allocator ();
+        } else { 
+            std::cout << "файл не найден" << std::endl; 
         }
+        T temp; 
         for (int i = 0; i < rows_count; ++i ) {
             for (int j = 0; j < columns_count; ++j ) {
                 ifs >> rowsPtr [i][j] ;
+            
             }
         } 
         return true; 
@@ -63,3 +106,6 @@ bool myMatrix<T>::load(const std::string & path) {
         return false; 
     }
 }
+
+
+#endif // !MATRIX_H
