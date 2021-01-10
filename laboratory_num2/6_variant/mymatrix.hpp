@@ -3,27 +3,31 @@
 #include <iostream> 
 #include <fstream>
 
-
+// шаблон матрицы 
 template <class T>
 class myMatrix{
 private:
+    // храним свойства матрицы
     int rows_count {0};
     int columns_count {0};
-    //int size; 
+    // флаг успешной инициализации 
     bool is_exist {false};
+    // указатель 
     T** rowsPtr  {nullptr}; 
     
     
     bool allocator ();
 
 public:
+    // конструктор без параметров
     explicit myMatrix ();
-    explicit myMatrix (int in_rows , int in_columns );
-    
-    //double sumPositive ();
+    // конструктор если строки и колонки известны
+    explicit myMatrix (int in_rows , int in_columns );    
+    //печатает матрицу
     void print();
+    // загружает матрицу из файла 
     bool load(const std::string & path);
-    bool input();
+    // деструктор необходим так как мы работаетм с памятью
     ~myMatrix ();
 
     // operators
