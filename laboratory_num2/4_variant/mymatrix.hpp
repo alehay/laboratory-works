@@ -7,23 +7,25 @@
 template <class T>
 class myMatrix{
 private:
+    // строки и коллоны 
     int rows_count {0};
     int columns_count {0};
-    //int size; 
+    // флаг удачной инциализации
     bool is_exist {false};
+    // храним указатели 
     T** rowsPtr  {nullptr}; 
-    
-    
+    // выделение памяти 
     bool allocator ();
 
 public:
+    // конструторы
     explicit myMatrix ();
     explicit myMatrix (int in_rows , int in_columns );
     
-    //double sumPositive ();
+   // печатаем матрицу
     void print();
+    // загрузка 
     bool load(const std::string & path);
-    bool input();
     ~myMatrix ();
 
     // operators

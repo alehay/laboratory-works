@@ -11,11 +11,12 @@ int main(int, char**) {
 myMatrix<double> matrix;
   matrix.load("matrix1.txt");
   matrix.print();
+  std::cout << "************" << std::endl;
+  std::cout << "сумма позитивных элементов : " << std::endl;
+  std::cout << matrix.sum_pos() << std::endl;
+  std::cout << "количество негативных элементов : " << std::endl;
+  std::cout << matrix.negative_count() << std::endl;
 
-  for(int i = 0; i < matrix.row(); ++i){
-    for(int j = 0; j < matrix.column(); ++j){
-      std::cout << matrix[i][j] << " ";
-    }
-    std::cout << std::endl;
-  }
+
+
 }

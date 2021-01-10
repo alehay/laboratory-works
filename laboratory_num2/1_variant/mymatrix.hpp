@@ -7,13 +7,14 @@
 template <class T>
 class myMatrix{
 private:
+    // информация о матрице
     int rows_count {0};
     int columns_count {0};
     //int size; 
     bool is_exist {false};
+    // указатель на матрицу
     T** rowsPtr  {nullptr}; 
-    
-    
+    // выделение памяти     
     bool allocator ();
 
 public:
@@ -30,7 +31,7 @@ public:
     int negative_count ();  
 
 
-    // operators
+  // перегрузка опереторов квадратные скобки
     T* operator[] (int i){
     return rowsPtr[i];
   }
@@ -123,7 +124,6 @@ T myMatrix<T>::sum_pos () {
     } 
     return temp;  
 }
-
 
 template<class T> 
 int  myMatrix<T>::negative_count () {

@@ -13,7 +13,5 @@ int  main( int argc, char *  argv[] )  {
        std::cout << (func (a) - func (b))/ func (c) << std::endl; 
     }
 
-    
-
     return 0;
 }
